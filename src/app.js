@@ -37,14 +37,20 @@ function doesFriendExist(ageInText, ageInNumber) {
 //Her friend divided the remaining sweets into 2 parts for each
 //How many sweets did her friend get to eat?
 function sweetTooth(totalNoOfSweets, sweetsConsumedByKaren, sweetsConsumedInNMeters, metersToTravel) {
-    let a = totalNoOfSweets - sweetsConsumedByKaren - (metersToTravel * sweetsConsumedInNMeters);
-    return a / 2;
+    if (typeof totalNoOfSweets == "number" && typeof sweetsConsumedByKaren == "number" && typeof sweetsConsumedInNMeters == "number" && typeof metersToTravel == "number") {
+        return ((totalNoOfSweets - sweetsConsumedByKaren) - (metersToTravel * sweetsConsumedInNMeters));
+    } else {
+        return "No sweets for Karen's friend";
+    }
 }
 //Progression 5:
 //As Lily moves closer, it gets colder. She checks the temperature on her mobile
 //It only shows in fahrenheit. Convert the data to celsius and return it.
 function convertToCelsius(fahrenheit) {
-    return ((fahrenheit - 32) * 5 / 9);
+    if (typeof fahrenheit == "number")
+        return (5 / 9) * (fahrenheit - 32);
+    else
+        return 'Technical Error!';
 }
 //Progression 6:
 //Lily can now do multiple things to deal with this
@@ -54,24 +60,24 @@ function convertToCelsius(fahrenheit) {
 //4. Lock her daughter in her room
 //Given a value, return which of these above actions Lily would take
 function aDifficultChoice(choice) {
-    if (choice > 1 && choice <= 4) {
-        switch (choice) {
-            case 1:
-                return ("Take her daughter to a doctor");
-                break;
-            case 2:
-                return ("Talk to her husband about it");
-                break;
-            case 3:
-                return ("Counsel her daughter herself");
-                break;
-            case 4:
-                return ("Lock her daughter in her room");
-            default:
-                return;
-        }
-    } else {
-        return
+    switch (choice) {
+        case 1:
+            return ("Take her daughter to a doctor");
+            break;
+        case 2:
+            return ("Talk to her husband about it");
+            break;
+        case 3:
+            return ("Counsel her daughter herself");
+            break;
+        case 4:
+            return ("Lock her daughter in her room");
+        case undefined:
+            return "Wasn't able to decide";
+        case 'I give up':
+            return "Refused to do anything for Karen";
+        default:
+            return "Break down and give up all hope";
     }
 }
 //Progression 7:
